@@ -2,5 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "local>projectbluefin/renovate-config"
+  ],
+  "github-actions": {
+    "enabled": false
+  },
+  "packageRules": [
+    {
+      "description": "ghcr.io/homebrew/brew:main rebuilds constantly; avoid daily digest-pin churn",
+      "matchDatasources": ["docker"],
+      "pinDigests": false
+    }
   ]
 }
