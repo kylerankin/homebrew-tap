@@ -16,7 +16,7 @@ cask "chairlift" do
     url :url
     strategy :github_releases do |releases|
       releases.filter_map do |release|
-        next if release["draft"]
+        next if release["draft"] || release["prerelease"]
 
         release["tag_name"]&.delete_prefix("v")
       end
