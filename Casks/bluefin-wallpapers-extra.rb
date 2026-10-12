@@ -8,8 +8,9 @@ cask "bluefin-wallpapers-extra" do
   homepage "https://github.com/projectbluefin/artwork"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    url "https://github.com/projectbluefin/artwork.git"
+    regex(/bluefin-extra-v?(\d{4}-\d{2}-\d{2})/)
+    strategy :github_releases
   end
 
   preflight_steps do
