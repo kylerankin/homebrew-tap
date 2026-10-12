@@ -38,6 +38,7 @@ cask "bluefin-wallpapers-extra"
 ## Automation and Releasing
 
 - **Autobump**: Daily automated workflow (`.github/workflows/autobump.yml`) runs `brew bump --tap=projectbluefin/tap` against upstream releases via livecheck blocks. When new versions are detected, pull requests are automatically opened.
+- **Dependency updates**: GitHub Actions are bumped weekly by Dependabot (`.github/dependabot.yml`). Renovate (`renovate.json`, extending `projectbluefin/renovate-config`) handles other dependencies; its `github-actions` manager is disabled to avoid duplicate PRs, and Docker digest pinning is off for the `ghcr.io/homebrew/brew:main` CI image.
 - **Testing**: PRs run `brew test-bot --only-tap-syntax` on Homebrew container CI (`.github/workflows/tests.yml`).
 - **Prow & Tide**: Managed through Prow (`.github/workflows/prow.yml`) using Project Bluefin's org Prow configuration (`projectbluefin/.project/prow.yaml`).
   - PRs require approval from an approver or reviewer listed in `OWNERS` (`/lgtm` and `/approve`).
