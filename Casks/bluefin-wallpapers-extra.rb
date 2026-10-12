@@ -13,6 +13,8 @@ cask "bluefin-wallpapers-extra" do
     strategy :github_releases
   end
 
+  depends_on :linux
+
   preflight_steps do
     on_linux do
       symlink ".", ".user-home", source_base: :home, overwrite: true
@@ -62,7 +64,14 @@ cask "bluefin-wallpapers-extra" do
 
   zap trash: [
     "#{Dir.home}/.local/share/backgrounds/bluefin",
-    "#{Dir.home}/.local/share/gnome-background-properties/*.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/dusk.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/duality.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/eyes.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/huntress.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/lazy-days.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/leaf-collector.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/prey.xml",
+    "#{Dir.home}/.local/share/gnome-background-properties/tenacious-pterosaur.xml",
     "#{Dir.home}/.local/share/wallpapers/bluefin",
   ]
 end
