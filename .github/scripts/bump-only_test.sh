@@ -55,5 +55,28 @@ check 1 "added cask" "[$(file Casks/y.rb added "@@ -0,0 +1 @@
 +  version \"1.0\"")]"
 check 1 "missing patch" '[{"filename":"Casks/x.rb","status":"modified"}]'
 
+bump="@@ -1,2 +1,2 @@
+-  version \"1.0\"
++  version \"1.1\""
+check 1 "removed cask" "[$(file Casks/x.rb removed "$bump")]"
+check 1 "renamed cask" "[$(file Casks/x.rb renamed "$bump")]"
+check 1 "nested cask path" "[$(file Casks/sub/x.rb modified "$bump")]"
+check 1 "uppercase cask name" "[$(file Casks/X.rb modified "$bump")]"
+check 1 "formula file" "[$(file Formula/x.rb modified "$bump")]"
+check 1 "context-only patch" "[$(file Casks/x.rb modified '@@ -1 +1 @@
+ cask "x" do')]"
+check 1 "empty patch" "[$(file Casks/x.rb modified '')]"
+check 1 "uppercase sha" "[$(file Casks/x.rb modified "@@ -1 +1 @@
++  sha256 \"$(printf 'A%.0s' {1..64})\"")]"
+check 1 "short sha" "[$(file Casks/x.rb modified "@@ -1 +1 @@
++  sha256 \"${h1:1}\"")]"
+check 1 "code after version" "[$(file Casks/x.rb modified '@@ -1 +1 @@
++  version "1.1"; system "id"')]"
+check 1 "interpolated version" "[$(file Casks/x.rb modified '@@ -1 +1 @@
++  version "#{x}"')]"
+check 1 "bad file on second page" "[$single] [$(file README.md modified '@@ -1 +1 @@
++x')]"
+check 1 "null page" "null"
+
 [ "$fails" -eq 0 ] && echo "bump-only: all checks passed"
 exit "$fails"
