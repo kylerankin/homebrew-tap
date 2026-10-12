@@ -42,8 +42,8 @@ cask "bluefin-wallpapers-extra" do
                          for file in "$PWD"/images/*; do
                            filename=$(basename "$file")
                            folder=${filename%.*}
-                           folder=${folder//-night/}
-                           folder=${folder//-day/}
+                           folder=${folder%-night}
+                           folder=${folder%-day}
                            mkdir -p "$destination/$folder"
                            ln -sfn "$file" "$destination/$folder/$filename"
                          done
