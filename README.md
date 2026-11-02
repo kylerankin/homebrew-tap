@@ -28,12 +28,14 @@ Using in a `Brewfile`:
 tap "projectbluefin/tap"
 cask "chairlift"
 cask "bluefin-wallpapers-extra"
+cask "bluefin-report"
 ```
 
 ## Packages in this tap
 
 - **`chairlift`**: System management tool for bootc-based installations
 - **`bluefin-wallpapers-extra`**: Extra wallpaper collection for Bluefin desktop
+- **`bluefin-report`**: "Report a problem" app to review and share a privacy-scrubbed system report as a GitHub issue
 
 ## Automation and Releasing
 
